@@ -1,0 +1,11 @@
+<style>
+html,body{margin:0!important;padding:0!important;height:auto!important;min-height:100%!important;overflow-x:clip!important;overflow-y:visible!important;background:#202020}
+.compact-bar,.device-switch,.workspace>aside{display:none!important}
+body .workspace,body .workspace>main,.preview-viewport,.holder,.frame{display:block!important;position:static!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;transform:none!important;overflow:visible!important;width:100%!important;height:auto!important}
+.preview-viewport iframe{display:block!important;position:relative!important;inset:auto!important;width:100vw!important;height:calc(100lvh + 32px)!important;transform:none!important;border:0!important;border-radius:0!important}
+</style><script>
+const phoneFrame=document.querySelector('iframe');
+
+phoneFrame.addEventListener('load',()=>{const d=phoneFrame.contentDocument;const style=d.createElement('style');style.textContent='.designer,.restore,.test-toggle,#testMode{display:none!important}html,body{margin:0!important;padding:0!important;width:100%!important;height:100%!important}.stage{width:100%!important;height:100%!important;margin:0!important;border:0!important;border-radius:0!important}.stage .opening-status{bottom:calc(92px + env(safe-area-inset-bottom,0px))!important}.stage address{bottom:calc(30px + env(safe-area-inset-bottom,0px))!important}.stage[data-logo-variant=logo2] .logo-since{position:absolute!important;top:auto!important;bottom:calc(134px + env(safe-area-inset-bottom,0px))!important;left:0!important;right:0!important;width:100%!important;height:auto!important;scale:none!important;translate:none!important;transform:none!important}.stage[data-logo-variant=logo2] .logo-since span{position:static!important;display:block!important;width:100%!important;max-width:none!important;min-height:0!important;padding:0!important;transform:none!important;font-size:calc(var(--yearFont,54)*.35*var(--logo-size,1.1)*var(--logo-sinceSize,.93)*1px)!important;line-height:1.2!important}';d.head.append(style);const test=d.getElementById('testMode');if(test){if(!test.checked)test.click();test.closest('label')?.style.setProperty('display','none','important');}});
+window.addEventListener('load',()=>{document.querySelector('[data-format="phone"]').click();});
+</script>

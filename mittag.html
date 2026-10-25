@@ -742,9 +742,8 @@ function renderDay(){
 }
 
 function fitTitles(){
- let size=11.5;const titles=[...$('paper').querySelectorAll('.dish')];
- for(const el of titles){el.style.whiteSpace='nowrap';el.style.fontSize=size+'px'}
- while(size>8.5&&titles.some(el=>el.scrollWidth>el.clientWidth+1)){size-=.1;for(const el of titles)el.style.fontSize=size+'px'}
+ const titles=[...$('paper').querySelectorAll('.dish')];
+ for(const el of titles){let size=11.5;el.style.whiteSpace='nowrap';el.style.fontSize=size+'px';while(size>1&&el.scrollWidth>el.clientWidth+1){size-=.1;el.style.fontSize=size+'px'}}
  for(const desc of $('paper').querySelectorAll('.desc')){desc.style.transform='none';const lineHeight=parseFloat(getComputedStyle(desc).lineHeight);if(lineHeight&&Math.round(desc.scrollHeight/lineHeight)===2)desc.style.transform='translateY('+(lineHeight/2)+'px)'}
 }
 function fitPaper(){const p=$('paper'),wrap=p.parentElement;if($('weekView').hidden)return;fitTitles();const scale=Math.min(1,wrap.clientWidth/1122.52);p.style.transform='scale('+scale+')';wrap.style.height=p.offsetHeight*scale+'px'}

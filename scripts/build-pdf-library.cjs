@@ -12,7 +12,7 @@ const crypto=require('node:crypto');
  const entries=[];await fs.mkdir('pdf-bibliothek',{recursive:true});
  for(const date of dates){
   await page.goto('http://127.0.0.1:8080/mittag.html?woche='+date,{waitUntil:'networkidle'});
-  const base64=await page.evaluate(async()=>{await document.fonts.ready;await pdfLogoMask.decode();const blob=await createPdf('screen');return await new Promise(resolve=>{const r=new FileReader();r.onload=()=>resolve(r.result.split(',')[1]);r.readAsDataURL(blob)})});
+  const base64=await page.evaluate(async()=>{await document.fonts.ready;await pdfLogoMask.decode();document.querySelectorAll('#paper .doc-title canvas').forEach(node=>node.remove());const blob=await createPdf('screen');return await new Promise(resolve=>{const r=new FileReader();r.onload=()=>resolve(r.result.split(',')[1]);r.readAsDataURL(blob)})});
   const data=Buffer.from(base64,'base64');const pdf=await PDFDocument.load(data);
   if(pdf.getPageCount()!==1||data.length<10000)throw Error('Invalid PDF '+date);
   const hash=crypto.createHash('sha256').update(data).digest('hex').slice(0,12);

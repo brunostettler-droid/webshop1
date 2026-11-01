@@ -1,60 +1,61 @@
-<!doctype html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Thai Food Kurier · iPhone 18</title>
-<style>
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#171717}
-iframe{display:block;width:min(390px,100vw);height:100vh;height:100dvh;margin:auto;border:0;background:#202020}
-html.expanded iframe{width:100%;max-width:none}
-.screen-controls{position:fixed;right:12px;top:max(10px,env(safe-area-inset-top));z-index:1000;display:flex;gap:8px}
-.screen-controls button{font:14px Arial;padding:9px 14px;color:#ead6a2;background:#24211cf0;border:1px solid #8b7046;border-radius:7px;cursor:pointer}
-.screen-controls [hidden]{display:none}
-</style>
-</head>
-<body>
-<iframe title="Webshop · iPhone 18" src="startseite.html?v=1793354864234279000&amp;format=phone&amp;layout=reference-natural" allow="fullscreen"></iframe>
-<nav class="screen-controls" aria-label="Vorschaugrösse">
-<button id="open-fullscreen" type="button">⛶ Vollbild</button>
-<button id="close-fullscreen" type="button" hidden>← Zurück</button>
-</nav>
-<script>
+<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Thai Food Kurier"><meta name="theme-color" content="#202020"><title>Thai Food Kurier · iPhone 18 Pro</title><style>html,body{margin:0;height:100%;overflow:hidden;background:#171717}iframe{display:block;width:min(390px,100vw);height:100dvh;margin:auto;border:0;background:#202020}</style><iframe title="Webshop · iPhone 18" src="startseite.html?v=kopfpaare-einheitlich-20261031&amp;format=phone&amp;layout=reference-natural"></iframe></html><style>.screen-controls{position:fixed;right:12px;top:10px;z-index:1000;display:flex;gap:8px}.screen-controls button{font:14px Arial;padding:9px 14px;color:#ead6a2;background:#24211cf0;border:1px solid #8b7046;border-radius:7px;cursor:pointer}.screen-controls [hidden]{display:none}html:fullscreen{background:#171717}html:fullscreen iframe{max-width:100vw}html:fullscreen .screen-controls{opacity:.65}html:fullscreen .screen-controls:hover{opacity:1}</style><nav class="screen-controls" aria-label="Vorschaugrösse"><button id="open-fullscreen">⛶ Vollbild</button><button id="close-fullscreen" hidden>⛶ Vollbild beenden</button></nav><style>
+html.customer-expanded iframe{width:100vw!important;height:100dvh!important;max-width:none!important}
+html.customer-expanded .screen-controls button:not(#close-fullscreen){display:none!important}
+html.customer-standalone .screen-controls{display:none!important}
+.screen-controls{top:calc(6px + env(safe-area-inset-top,0px));right:8px}
+#iphone-fullscreen-help{box-sizing:border-box;max-width:calc(100vw - 32px);width:350px;background:#181818;color:#eee;border:1px solid #917847;border-radius:12px;padding:24px;font:16px/1.5 Arial}
+#iphone-fullscreen-help::backdrop{background:#000b}
+#iphone-fullscreen-help h2{color:#d9b968;font-size:21px;margin:0 0 12px}
+#iphone-fullscreen-help button{padding:10px 18px;background:#641b23;color:#e8cf92;border:1px solid #917847;border-radius:6px;font:16px Arial}
+</style><dialog id="iphone-fullscreen-help"><h2>Vollbild auf dem iPhone</h2><p>Safari blendet die Adressleiste bei diesem Knopf nicht aus.</p><p>Tippe in Safari auf <strong>Teilen</strong> → <strong>Zum Home-Bildschirm</strong>. Öffne den Webshop danach über das neue Symbol – dann erscheint er ohne Safari-Leisten.</p><button type="button">Verstanden</button></dialog>
+<script id="iphone-fullscreen-controller">
 (()=>{
-const root=document.documentElement,frame=document.querySelector('iframe');
-const open=document.getElementById('open-fullscreen'),back=document.getElementById('close-fullscreen');
-let expanded=false;
-function sync(){
-const full=expanded||!!document.fullscreenElement;
-root.classList.toggle('expanded',full);
-open.hidden=full;back.hidden=!full;open.setAttribute('aria-expanded',String(full));
-try{
-const doc=frame.contentDocument;
-if(doc){
-doc.documentElement.classList.toggle('fullscreen-customer',full);
-let style=doc.getElementById('phone-fullscreen-fallback');
-if(!style){style=doc.createElement('style');style.id='phone-fullscreen-fallback';style.textContent='html.fullscreen-customer body .device-switch{display:none!important}html.fullscreen-customer body.preview-only .workspace .preview-viewport iframe{inset:0!important;top:0!important;width:100%!important;height:100%!important}';doc.head.append(style);}
-frame.contentWindow.dispatchEvent(new Event('resize'));
-}
-}catch(error){}
-dispatchEvent(new Event('resize'));
-}
-open.onclick=()=>{
-expanded=true;sync();
-if(typeof root.requestFullscreen==='function'){
-try{Promise.resolve(root.requestFullscreen()).catch(()=>sync());}catch(error){sync();}
-}
-};
-back.onclick=()=>{
-expanded=false;sync();
-if(document.fullscreenElement&&typeof document.exitFullscreen==='function'){
-try{Promise.resolve(document.exitFullscreen()).catch(()=>sync());}catch(error){sync();}
-}
-};
-document.addEventListener('fullscreenchange',()=>{expanded=!!document.fullscreenElement;sync();});
-frame.addEventListener('load',sync);
-sync();
+ const root=document.documentElement,open=document.getElementById('open-fullscreen'),back=document.getElementById('close-fullscreen'),frame=document.querySelector('iframe'),help=document.getElementById('iphone-fullscreen-help');let expanded=false;
+ function standalone(){return navigator.standalone===true||matchMedia('(display-mode:standalone)').matches}
+ function sync(){const full=expanded||!!document.fullscreenElement||standalone();root.classList.toggle('customer-expanded',full);root.classList.toggle('customer-standalone',standalone());open.hidden=full;back.hidden=!full;back.textContent='← Zurück';try{frame.contentDocument.documentElement.classList.toggle('fullscreen-customer',full)}catch{}dispatchEvent(new Event('resize'));}
+ open.onclick=async()=>{window.dispatchEvent(new Event('tfk-preview-original'));expanded=true;sync();if(typeof root.requestFullscreen==='function'){try{await root.requestFullscreen();return}catch{}}if(!standalone())help.showModal();};
+ back.onclick=async()=>{expanded=false;if(document.fullscreenElement&&document.exitFullscreen)await document.exitFullscreen();sync();};
+ help.querySelector('button').onclick=()=>help.close();
+ document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement)expanded=false;sync()});frame.addEventListener('load',sync);sync();
+})();
+</script><script id="preview-pinch-zoom">
+(()=>{
+ const preview=document.querySelector('iframe');let zoom=1,startZoom=1,startDistance=0;
+ preview.style.transformOrigin='50% 0';
+ const reset=document.createElement('button');reset.textContent='100 %';reset.title='Vorschau auf Originalgrösse zurücksetzen';document.querySelector('.screen-controls').prepend(reset);
+ function setZoom(value){zoom=Math.max(.6,Math.min(3,value));preview.style.transform=`scale(${zoom})`;reset.textContent=Math.round(zoom*100)+' %';}
+ reset.onclick=()=>setZoom(1);
+ window.addEventListener('tfk-preview-original',()=>setZoom(1));
+ document.addEventListener('fullscreenchange',()=>{if(document.fullscreenElement)setZoom(1);});
+ const seen=new WeakSet();
+ function bind(doc){if(!doc||seen.has(doc))return;seen.add(doc);
+ doc.addEventListener('wheel',e=>{if(!e.ctrlKey)return;e.preventDefault();setZoom(zoom*Math.exp(-e.deltaY*.008));},{passive:false});
+ doc.addEventListener('gesturestart',e=>{e.preventDefault();startZoom=zoom;},{passive:false});
+ doc.addEventListener('gesturechange',e=>{e.preventDefault();setZoom(startZoom*e.scale);},{passive:false});
+ doc.addEventListener('gestureend',e=>e.preventDefault(),{passive:false});
+ const distance=e=>Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+ doc.addEventListener('touchstart',e=>{if(e.touches.length!==2)return;e.preventDefault();startDistance=distance(e);startZoom=zoom;},{passive:false});
+ doc.addEventListener('touchmove',e=>{if(e.touches.length!==2||!startDistance)return;e.preventDefault();setZoom(startZoom*distance(e)/startDistance);},{passive:false});
+ doc.addEventListener('touchend',()=>{startDistance=0;});
+ function frames(){doc.querySelectorAll('iframe').forEach(f=>{if(!f.dataset.pinchBound){f.dataset.pinchBound='1';f.addEventListener('load',()=>{try{bind(f.contentDocument)}catch{}});}try{bind(f.contentDocument)}catch{}});}
+ frames();new MutationObserver(frames).observe(doc.documentElement,{childList:true,subtree:true});
+ }
+ bind(document);
 })();
 </script>
-</body>
-</html>
+
+<style id="iphone-pro-preview-size">
+/* Fixed logical display size: 1206 × 2622 physical pixels at 3x. */
+@media (min-width: 621px) {
+ html,body{overflow:auto}
+ body{padding-top:52px;box-sizing:border-box}
+ body > iframe,html.customer-expanded body > iframe{width:402px!important;height:874px!important;max-width:none!important;margin:0 auto 24px;flex-shrink:0}
+}
+</style>
+
+<style id="fullscreen-original-phone">
+@media (min-width:621px){
+html:fullscreen body{padding:0;min-height:100dvh;display:grid;place-items:center;overflow:auto}
+html:fullscreen body > iframe{width:402px!important;height:874px!important;max-width:none!important;margin:0!important;transform:scale(.75)!important;transform-origin:center center!important}
+}
+</style>

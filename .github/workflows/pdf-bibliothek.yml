@@ -1,0 +1,54 @@
+name: PDF-Bibliothek
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * *'
+  push:
+    branches: [main]
+    paths: ['mittag.html', 'startseite.html', 'mittagsmenuplaene.json', 'scripts/build-pdf-library.cjs', '.github/workflows/pdf-bibliothek.yml']
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pdf-bibliothek
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright@1.56.1 pdf-lib@1.17.1
+      - run: npx playwright install --with-deps chromium
+      - run: sudo apt-get install -y fonts-noto-core
+      - name: Build five complete PDFs
+        run: |
+          python3 -m http.server 8080 --bind 127.0.0.1 >/tmp/pdf-server.log 2>&1 &
+          node scripts/build-pdf-library.cjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pdf-bibliothek-kontrolle
+          path: pdf-bibliothek/
+      - name: Save library
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add pdf-bibliothek/*.pdf pdf-bibliothek/index.json pdf-bibliothek/index.html
+          git diff --cached --quiet || git commit -m 'Update five dated weekly menu PDFs'
+          git push
+      - name: Prepare website
+        run: |
+          mkdir /tmp/webshop-site
+          rsync -a --exclude='.git' --exclude='.github' --exclude='node_modules' --exclude='scripts' --exclude='check-*.png' ./ /tmp/webshop-site/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: /tmp/webshop-site
+      - uses: actions/deploy-pages@v4
+        id: deployment

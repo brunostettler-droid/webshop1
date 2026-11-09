@@ -35,7 +35,7 @@
 
 
 #paper .brandline .logohead:last-child::after{
- content:"gegr. 1995";
+ content:"Gegr. 1995";
  position:absolute;
  left:calc(50% + 12.16px * var(--headSize,1) + 48px);
  top:50%;transform:translateY(-50%);
@@ -178,7 +178,7 @@ body.user-resizing,body.user-resizing *{cursor:col-resize!important;user-select:
  #paper .extras{background:#fff!important}
  #paper::before,#paper .menu-frame::before{display:none!important}
  #paper .brandline .logohead::before{background:var(--bw-head-art,var(--pdf-head-art)) center/contain no-repeat!important;filter:grayscale(1) brightness(0)!important}
- #paper .brandline .logohead:last-child::after{content:"gegr. 1995"!important;background:none!important;width:auto!important;height:auto!important;color:#000!important;font-family:Arial,sans-serif!important;font-size:18px!important;letter-spacing:.5px!important;text-shadow:none!important;filter:none!important}
+ #paper .brandline .logohead:last-child::after{content:"Gegr. 1995"!important;background:none!important;width:auto!important;height:auto!important;color:#000!important;font-family:Arial,sans-serif!important;font-size:18px!important;letter-spacing:.5px!important;text-shadow:none!important;filter:none!important}
 }
 
 
@@ -188,7 +188,7 @@ body.user-resizing,body.user-resizing *{cursor:col-resize!important;user-select:
 #paper .brandline .logohead{transform:translate(var(--free-head-x,0px),var(--free-head-y,0px))!important;cursor:grab;touch-action:none;z-index:4}
 #paper .brandline .logohead:first-child{transform:translate(var(--free-head-x,0px),var(--free-head-y,0px))!important}
 #paper .brandline .logohead:last-child::after{display:none!important}
-#paper .founding-year{position:absolute;z-index:5;white-space:nowrap;width:max-content;font:700 18px/1.2 Arial,sans-serif;letter-spacing:.5px;color:#ff202b;cursor:grab;touch-action:none;user-select:none}
+#paper .founding-year{position:absolute;z-index:5;white-space:nowrap;width:max-content;font:700 18px/1.2 Arial,sans-serif;letter-spacing:.5px;color:#c99b73;cursor:grab;touch-action:none;user-select:none}
 #paper .founding-year:hover{outline:1px dashed #ee5964;outline-offset:4px}
 @media print{#paper .founding-year{color:#000!important;outline:none!important}}
 
@@ -201,7 +201,7 @@ body.user-resizing,body.user-resizing *{cursor:col-resize!important;user-select:
 
 @media screen{
 #paper .menugrid th{background:var(--header)!important}
-#paper .doc-title,#paper .menugrid .number,#paper .extra .extra-title,#paper .reddot,#paper .founding-year{color:var(--header)!important}
+#paper .doc-title,#paper .menugrid .number,#paper .extra .extra-title,#paper .reddot{color:var(--header)!important}
 #paper .brandline .logohead::before{background:var(--header)!important;mask:var(--uniform-head-mask) center/contain no-repeat!important;-webkit-mask:var(--uniform-head-mask) center/contain no-repeat!important;filter:none!important}
 #paper::before{background:var(--header)!important;mask:var(--uniform-head-mask) center/contain no-repeat!important;-webkit-mask:var(--uniform-head-mask) center/contain no-repeat!important;filter:none!important}
 }
@@ -210,11 +210,11 @@ body.user-resizing,body.user-resizing *{cursor:col-resize!important;user-select:
 @media screen{#paper .doc-title,#paper .menugrid .number{color:color-mix(in srgb,var(--header) 88%,white)!important}}
 
 
-#paper .founding-year{border:0;padding:0;-webkit-text-stroke:.6px #d4af37;paint-order:stroke fill}
+#paper .founding-year{border:0;padding:0;-webkit-text-stroke:0;paint-order:stroke fill}
 @media print{#paper .founding-year{-webkit-text-stroke:0}}
 
 
-#paper .doc-title,#paper .menugrid .number{-webkit-text-stroke:.6px #d4af37;paint-order:stroke fill}
+#paper .doc-title,#paper .menugrid .number{-webkit-text-stroke:0;paint-order:stroke fill}
 @media print{#paper .doc-title,#paper .menugrid .number{-webkit-text-stroke:0}}
 
 
@@ -284,7 +284,7 @@ body.user-resizing,body.user-resizing *{cursor:col-resize!important;user-select:
 
 @media screen{
  #paper .brandline .logohead{opacity:1!important;filter:brightness(1.7) saturate(1.1)!important}
- #paper [data-artwork="year"]{opacity:1!important;color:#ff5d62!important;-webkit-text-fill-color:#ff5d62!important;filter:brightness(1.25)!important}
+ #paper [data-artwork="year"]{opacity:1!important;color:#c99b73!important;-webkit-text-fill-color:#c99b73!important;filter:none!important}
  #paper .doc-title{display:table;margin:3px auto 14px!important;padding:15px 66px 17px!important;border-radius:50%!important;background:linear-gradient(145deg,#a52530,#67131c)!important;border:1px solid #bd6a46;color:#f2d694!important;-webkit-text-fill-color:#f2d694!important;box-shadow:inset 0 1px 0 #ffffff18,0 4px 16px #0004;line-height:1.12!important}
 }
 
@@ -300,7 +300,7 @@ body.user-resizing,body.user-resizing *{cursor:col-resize!important;user-select:
 @media screen{
  #paper .brandline .logohead{opacity:1!important;filter:none!important}
  #paper .brandline .logohead::before{background-color:#ff454d!important;opacity:1!important;filter:none!important}
- #paper [data-artwork="year"]{color:#ff454d!important;-webkit-text-fill-color:#ff454d!important;opacity:1!important;filter:none!important;text-shadow:none!important;-webkit-text-stroke:0!important}
+ #paper [data-artwork="year"]{color:#c99b73!important;-webkit-text-fill-color:#c99b73!important;opacity:1!important;filter:none!important;text-shadow:none!important;-webkit-text-stroke:0!important}
  #paper .doc-title{background:rgba(143,16,24,.6)!important;background-clip:padding-box!important;border:1px solid #000!important;box-shadow:inset 0 0 0 2px #000,inset 0 0 18px 4.5px rgba(0,0,0,.85),0 0 10.8px 2.16px rgba(0,0,0,.85)!important}
 }
 @media screen{#paper .brand .reddot{color:#ff454d!important;-webkit-text-fill-color:#ff454d!important;background:none!important}}
@@ -848,7 +848,7 @@ Pouletspiessli mit Erdnusssauce (BRA)  12.50
 Plastikbesteck / Stäbli  1.00</p><p class="" data-key="b0p2" style="font-weight: 700;">Getränke je CHF 4.00</p></div><div class="extra"><p class="extra-title" data-key="b1p0" style="font-weight: 700;">Pouletspiessli &amp; Herkunft</p><p class="" data-key="b1p3" style="font-weight: 700;">Pouletspiessli-Menü</p><p class="" data-key="b1p4">4 Pouletspiessli (BRA) und 1 Portion Reis</p><p class="" data-key="b1p5" style="font-weight: 700;">Fleischdeklaration</p><p class="" data-key="b1p6">Rind und Schwein: Schweiz · Poulet: Schweiz/Brasilien · Ente: Polen · Fisch: Vietnam</p></div><div class="extra"><p class="extra-title" data-key="b2p0" style="font-weight: 700;">Bestellung und Abholung</p><p class="" data-key="b2p1" style="font-weight: 700;">031 382 59 59  ·  10.30 bis 13.00 Uhr</p><p class="" data-key="b2p2">Mindestbestellung: Bern und nähere Umgebung 3 Menüs;
 Agglomeration 5 Menüs.</p><p class="" data-key="b2p5">Ab 5 Menüs bitte gesammelt bezahlen.
 Unsere Kuriere führen höchstens CHF 200.00 mit.</p><p class="" data-key="b2p3" style="font-weight: 700;">Take Away CHF 15.00</p><p class="" data-key="b2p4">Abholung mittags von 10.30 bis 13.00 Uhr.
-Schwarztorstrasse 93, 3007 Bern</p><p class="" data-key="b2p6">info@thaifoodkurier.ch  ·  www.thaifoodkurier.ch</p></div></div><div class="fineprint" data-key="fineprint">Alle Gerichte werden von unseren thailändischen Köchinnen aus frischen Zutaten zubereitet. Alle Preise in CHF.</div><span class="founding-year" data-artwork="year" tabindex="0" title="Frei ziehen oder mit Pfeiltasten verschieben" style="left: 782px; top: 68px;">gegr. 1995</span></article></div></section><footer class="shop-footer"><p id="priceInfo"></p><p>Lieferung und Parfumreis inbegriffen. Gebratene Eiernudeln als Beilage: zusätzlich CHF 2.00.</p><div class="daily-extras"><div class="extra"><p class="extra-title" data-key="b0p0" style="font-weight: 700;">Vorspeisen und Getränke</p><p class="" data-key="b0p1">Frühlingsrollen mit Gemüse  7.00  ·  Gemüsestückchen  8.00
+Schwarztorstrasse 93, 3007 Bern</p><p class="" data-key="b2p6">info@thaifoodkurier.ch  ·  www.thaifoodkurier.ch</p></div></div><div class="fineprint" data-key="fineprint">Alle Gerichte werden von unseren thailändischen Köchinnen aus frischen Zutaten zubereitet. Alle Preise in CHF.</div><span class="founding-year" data-artwork="year" tabindex="0" title="Frei ziehen oder mit Pfeiltasten verschieben" style="left: 782px; top: 68px;">Gegr. 1995</span></article></div></section><footer class="shop-footer"><p id="priceInfo"></p><p>Lieferung und Parfumreis inbegriffen. Gebratene Eiernudeln als Beilage: zusätzlich CHF 2.00.</p><div class="daily-extras"><div class="extra"><p class="extra-title" data-key="b0p0" style="font-weight: 700;">Vorspeisen und Getränke</p><p class="" data-key="b0p1">Frühlingsrollen mit Gemüse  7.00  ·  Gemüsestückchen  8.00
 Frittierte Hackfleischbällchen  9.00
 Gebackene Pouletstückchen (BRA)  9.00
 Gebackene Crevetten  11.50
@@ -1231,9 +1231,10 @@ pdfLogoMask.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAccAAASICAYAAABmy
   return new Blob([await pdf.save()],{type:'application/pdf'});
  }
 
+const pdfBrandingRevision='gegr-bronze-v1';
 async function downloadLibraryPdf(start){
  const base=new URL('https://brunostettler-droid.github.io/webshop1/pdf-bibliothek/');
- try{const response=await fetch(new URL('index.json?t='+Math.floor(Date.now()/60000),base),{signal:AbortSignal.timeout(4000)});if(!response.ok)return false;const manifest=await response.json();const entry=manifest.weeks.find(item=>item.week===iso(monday(start)));if(!entry||!/^Wochenplan-[\w-]+\.pdf$/.test(entry.file))return false;const pdf=await fetch(new URL(entry.file,base),{signal:AbortSignal.timeout(15000)});if(!pdf.ok)return false;const blob=await pdf.blob();if(blob.size<10000)return false;const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=entry.file;link.textContent=entry.file;document.getElementById('printStatus').replaceChildren(document.createTextNode('PDF bereit: '),link);link.click();setTimeout(()=>URL.revokeObjectURL(url),60000);return true}catch{return false}
+ try{const response=await fetch(new URL('index.json?t='+Math.floor(Date.now()/60000),base),{signal:AbortSignal.timeout(4000)});if(!response.ok)return false;const manifest=await response.json();if(manifest.brandingRevision!==pdfBrandingRevision)return false;const entry=manifest.weeks.find(item=>item.week===iso(monday(start)));if(!entry||!/^Wochenplan-[\w-]+\.pdf$/.test(entry.file))return false;const pdf=await fetch(new URL(entry.file,base),{signal:AbortSignal.timeout(15000)});if(!pdf.ok)return false;const blob=await pdf.blob();if(blob.size<10000)return false;const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=entry.file;link.textContent=entry.file;document.getElementById('printStatus').replaceChildren(document.createTextNode('PDF bereit: '),link);link.click();setTimeout(()=>URL.revokeObjectURL(url),60000);return true}catch{return false}
 }
 let exportingPdf=false;
 async function downloadWeek(start,mode='screen'){
@@ -1353,4 +1354,10 @@ sync();head.addEventListener('load',sync);new ResizeObserver(sync).observe(head)
 }
 @media screen and (max-width:620px){.day-menu-extra .day-menu-extras-content{grid-template-columns:1fr;gap:9px}}
 @media print{.day-menu-extra{display:none!important}}
+</style>
+<style id="tfk-black-background">
+@media screen{
+html,body{background:#000!important}
+.lunch-shop .day-menu-extras-content,.lunch-shop dialog{background:#000!important}
+}
 </style>

@@ -1,1 +1,18 @@
-<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thai Food Kurier</title><script>location.replace((innerWidth>=1000?"webshop-desktop.html":innerWidth>=600?"webshop-iphone-dual.html":"webshop-iphone18.html")+"?v=tagesmenu-weizennudeln");</script><body style="background:#202022;color:#d9b968;font:16px Arial"><a style="color:inherit" href="startseite.html?v=tagesmenu-weizennudeln">Webshop öffnen</a></body></html>
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000">
+  <title>Thai Food Kurier</title>
+  <style>body{background:#000;color:#d9b968;font:16px Arial,sans-serif}a{color:inherit}</style>
+  <script>
+    const phone = /iPhone|iPod/i.test(navigator.userAgent)
+      || matchMedia('(max-width: 620px) and (pointer: coarse)').matches;
+    const page = phone || innerWidth < 600 ? 'webshop-iphone18.html'
+      : innerWidth < 1000 ? 'webshop-iphone-dual.html' : 'webshop-desktop.html';
+    location.replace('./' + page + '?v=iphone-bildfuellend' + location.hash);
+  </script>
+</head>
+<body><a href="./webshop-iphone18.html?v=iphone-bildfuellend">Webshop öffnen</a></body>
+</html>

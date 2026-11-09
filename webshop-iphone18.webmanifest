@@ -1,0 +1,10 @@
+{
+  "id": "./webshop-iphone18.html",
+  "name": "Thai Food Kurier",
+  "short_name": "Thai Food Kurier",
+  "start_url": "./webshop-iphone18.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000"
+}

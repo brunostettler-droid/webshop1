@@ -1,18 +1,24 @@
-<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Thai Food Kurier"><meta name="theme-color" content="#202020"><title>Thai Food Kurier · iPhone 18 Pro</title><style>html,body{margin:0;height:100%;overflow:hidden;background:#171717}iframe{display:block;width:100%;height:100dvh;margin:auto;border:0;background:#202020}</style><iframe title="Webshop · iPhone 18" src="startseite.html?v=tagesmenu-weizennudeln&amp;format=phone&amp;layout=reference-natural"></iframe></html><style>.screen-controls{position:fixed;right:12px;top:10px;z-index:1000;display:flex;gap:8px}.screen-controls button{font:14px Arial;padding:9px 14px;color:#ead6a2;background:#24211cf0;border:1px solid #8b7046;border-radius:7px;cursor:pointer}.screen-controls [hidden]{display:none}html:fullscreen{background:#171717}html:fullscreen iframe{max-width:100vw}html:fullscreen .screen-controls{opacity:.65}html:fullscreen .screen-controls:hover{opacity:1}</style><nav class="screen-controls" aria-label="Vorschaugrösse"><button id="open-fullscreen">⛶ Vollbild</button><button id="close-fullscreen" hidden>⛶ Vollbild beenden</button></nav><style>
+<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Thai Food Kurier"><meta name="theme-color" content="#000"><link rel="manifest" href="./webshop-iphone18.webmanifest"><title>Thai Food Kurier · iPhone 18 Pro</title><style>html,body{margin:0;height:100%;overflow:hidden;background:#171717}iframe{display:block;width:100%;height:100dvh;margin:auto;border:0;background:#202020}</style><iframe title="Webshop · iPhone 18" src="startseite.html?v=gegr-bronze&amp;format=phone&amp;layout=reference-natural"></iframe></html><style>.screen-controls{position:fixed;right:12px;top:10px;z-index:1000;display:flex;gap:8px}.screen-controls button{font:14px Arial;padding:9px 14px;color:#ead6a2;background:#24211cf0;border:1px solid #8b7046;border-radius:7px;cursor:pointer}.screen-controls [hidden]{display:none}html:fullscreen{background:#171717}html:fullscreen iframe{max-width:100vw}html:fullscreen .screen-controls{opacity:.65}html:fullscreen .screen-controls:hover{opacity:1}</style><nav class="screen-controls" aria-label="Vorschaugrösse"><button id="open-fullscreen">⛶ Vollbild</button><button id="close-fullscreen" hidden>⛶ Vollbild beenden</button></nav><style>
 html.customer-expanded iframe{width:100vw!important;height:100dvh!important;max-width:none!important}
 html.customer-expanded .screen-controls button:not(#close-fullscreen){display:none!important}
-html.customer-standalone .screen-controls{display:none!important}
+html:is(.customer-standalone,.customer-phone) .screen-controls{display:none!important}
 .screen-controls{top:calc(6px + env(safe-area-inset-top,0px));right:8px}
 #iphone-fullscreen-help{box-sizing:border-box;max-width:calc(100vw - 32px);width:350px;background:#181818;color:#eee;border:1px solid #917847;border-radius:12px;padding:24px;font:16px/1.5 Arial}
 #iphone-fullscreen-help::backdrop{background:#000b}
 #iphone-fullscreen-help h2{color:#d9b968;font-size:21px;margin:0 0 12px}
 #iphone-fullscreen-help button{padding:10px 18px;background:#641b23;color:#e8cf92;border:1px solid #917847;border-radius:6px;font:16px Arial}
-</style><dialog id="iphone-fullscreen-help"><h2>Vollbild auf dem iPhone</h2><p>Safari blendet die Adressleiste bei diesem Knopf nicht aus.</p><p>Tippe in Safari auf <strong>Teilen</strong> → <strong>Zum Home-Bildschirm</strong>. Öffne den Webshop danach über das neue Symbol – dann erscheint er ohne Safari-Leisten.</p><button type="button">Verstanden</button></dialog>
+</style><dialog id="iphone-fullscreen-help"><h2>Vollbild auf dem iPhone</h2><p>Safari blendet die Adressleiste bei diesem Knopf nicht aus.</p><p>Tippe in Safari auf <strong>Teilen</strong> → <strong>Zum Home-Bildschirm</strong> und aktiviere <strong>Als Web-App öffnen</strong>. Öffne den Webshop danach über das neue Symbol.</p><button type="button">Verstanden</button></dialog>
 <script id="iphone-fullscreen-controller">
 (()=>{
  const root=document.documentElement,open=document.getElementById('open-fullscreen'),back=document.getElementById('close-fullscreen'),frame=document.querySelector('iframe'),help=document.getElementById('iphone-fullscreen-help');let expanded=false;const physicalPhone=matchMedia("(max-width:620px) and (pointer:coarse)");
+ function isPhone(){return /iPhone|iPod/i.test(navigator.userAgent)||physicalPhone.matches}
  function standalone(){return navigator.standalone===true||matchMedia('(display-mode:standalone)').matches}
- function sync(){const full=expanded||!!document.fullscreenElement||standalone()||physicalPhone.matches;root.classList.toggle('customer-expanded',full);root.classList.toggle('customer-standalone',standalone()||physicalPhone.matches);open.hidden=full;back.hidden=!full;back.textContent='← Zurück';try{frame.contentDocument.documentElement.classList.toggle('fullscreen-customer',full)}catch{}dispatchEvent(new Event('resize'));}
+ function sync(){
+  const phone=isPhone(), installed=standalone();
+  const full=expanded||!!document.fullscreenElement||installed||phone;
+  root.classList.toggle('customer-expanded',full);
+  root.classList.toggle('customer-standalone',installed);
+  root.classList.toggle('customer-phone',phone);open.hidden=full;back.hidden=!full;back.textContent='← Zurück';try{frame.contentDocument.documentElement.classList.toggle('fullscreen-customer',full)}catch{}dispatchEvent(new Event('resize'));}
  open.onclick=async()=>{window.dispatchEvent(new Event('tfk-preview-original'));expanded=true;sync();if(typeof root.requestFullscreen==='function'){try{await root.requestFullscreen();return}catch{}}if(!standalone())help.showModal();};
  back.onclick=async()=>{expanded=false;if(document.fullscreenElement&&document.exitFullscreen)await document.exitFullscreen();sync();};
  help.querySelector('button').onclick=()=>help.close();
@@ -52,6 +58,21 @@ html.customer-standalone .screen-controls{display:none!important}
  html.customer-expanded body{padding:0}
  html.customer-expanded body>iframe{top:0}
 }
-@media(max-width:620px){body>iframe{width:100vw!important;height:100dvh!important}}
+/* In the installed app the available viewport extends to the screen edges. */
+@media(max-width:620px){
+ body{padding:0}
+ body>iframe{position:fixed;inset:0;width:100%!important;height:100vh!important;height:100dvh!important;margin:0!important}
+}
+html:is(.customer-standalone,.customer-phone) body{padding:0}
+html:is(.customer-standalone,.customer-phone) body>iframe{
+ position:fixed;inset:0;width:100%!important;height:100vh!important;height:100dvh!important;
+ margin:0!important;transform:none!important
+}
 </style><script id="iphone-preview-fit">(()=>{const root=document.documentElement;function fit(){const chrome=root.classList.contains('customer-expanded')?0:52;root.style.setProperty('--iphone-fit',Math.max(.1,Math.min(root.clientWidth/402,(root.clientHeight-chrome)/874)));}addEventListener('resize',fit);document.addEventListener('fullscreenchange',fit);fit();})();</script>
 <script id="foodtruck-preview-refresh">(()=>{const rev=new URLSearchParams(location.search).get('foodtruckPreview');if(!rev||!/^\d{1,16}$/.test(rev))return;const frame=document.querySelector('iframe'),url=new URL(frame.getAttribute('src'),location.href);url.searchParams.set('v',rev);frame.src=url.href;})();</script>
+<style id="tfk-black-background">
+@media screen{
+html,body{background:#000!important}
+iframe,html:fullscreen{background:#000!important}
+}
+</style>

@@ -1,31 +1,31 @@
 {
   "brandingRevision": "gegr-bronze-v1",
-  "generatedAt": "2026-11-15T18:19:39.111Z",
+  "generatedAt": "2026-11-16T11:18:38.929Z",
   "weeks": [
     {
-      "week": "2026-11-09",
-      "file": "Wochenplan-2026-11-09-cdd52eed3dcb.pdf",
-      "bytes": 1042523
-    },
-    {
       "week": "2026-11-16",
-      "file": "Wochenplan-2026-11-16-6aedb12b4c44.pdf",
-      "bytes": 1034942
+      "file": "Wochenplan-2026-11-16-dda169c68244.pdf",
+      "bytes": 1034940
     },
     {
       "week": "2026-11-23",
-      "file": "Wochenplan-2026-11-23-bd55f377ace8.pdf",
-      "bytes": 1001767
+      "file": "Wochenplan-2026-11-23-2ce64a94d470.pdf",
+      "bytes": 1001764
     },
     {
       "week": "2026-11-30",
-      "file": "Wochenplan-2026-11-30-5f1f5284628f.pdf",
-      "bytes": 1038249
+      "file": "Wochenplan-2026-11-30-d6f8f8628701.pdf",
+      "bytes": 1038248
     },
     {
       "week": "2026-12-07",
-      "file": "Wochenplan-2026-12-07-400480f36dae.pdf",
-      "bytes": 1011561
+      "file": "Wochenplan-2026-12-07-bf1aff75e5dc.pdf",
+      "bytes": 1011559
+    },
+    {
+      "week": "2026-12-14",
+      "file": "Wochenplan-2026-12-14-dba7ed7214b2.pdf",
+      "bytes": 1039542
     }
   ]
 }
